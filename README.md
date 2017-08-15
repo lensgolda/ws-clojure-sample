@@ -1,14 +1,16 @@
 # ws-clojure-sample
 
-A Clojure library designed to ... well, that part is up to you.
+Clojure websocket async app sample using httpk-kit
 
 ## Usage
 
-FIXME
+simply run it with lein
+```clojure
+lein run
+```
 
 ## License
 
-Copyright © 2017 FIXME
+Copyright © 2017 Lens
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the MIT license.

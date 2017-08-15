@@ -10,5 +10,6 @@
                 [org.clojure/core.async "0.3.443"]
                 [http-kit "2.2.0"]
                 [javax.servlet/servlet-api "2.5"]
-                [compojure "1.6.0"]]
+                [compojure "1.6.0"]
+                [ring/ring-devel "1.6.2"]]
 :main ws-clojure-sample.core)
