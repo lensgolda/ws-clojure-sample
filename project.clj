@@ -11,5 +11,6 @@
                 [http-kit "2.2.0"]
                 [javax.servlet/servlet-api "2.5"]
                 [compojure "1.6.0"]
-                [ring/ring-devel "1.6.2"]]
+                [ring/ring-devel "1.6.2"]
+                [hiccup "1.0.5"]]
 :main ws-clojure-sample.core)
