@@ -1,10 +1,10 @@
 (ns ws-clojure-sample.core
     (:require [org.httpkit.server :refer [run-server]]                  ;; http-kit server
               [compojure.core :refer [defroutes GET POST DELETE ANY]]   ;; defroutes, и методы
-              [compojure.route :refer [resources files not-found]]      ;; маршруты для ресурсов и статики, а также страница not-found
+              [compojure.route :refer [resources files not-found]]      ;; маршруты для статики, и not-found
               [ring.middleware.defaults :refer :all]                    ;; middleware
-              [ws-clojure-sample.views.index :refer [index-page]]
-              [ws-clojure-sample.handler :refer [ws-handler]]))         ;; Добавляем представление index-page
+              [ws-clojure-sample.views.index :refer [index-page]]       ;; Добавляем представление index-page
+              [ws-clojure-sample.handler :refer [ws-handler]]))         ;; Добавляем обработчик для веб-сокетов
 
 (defroutes app-routes
   (GET "/" [] index-page)                       ;; Нам нужна будет главная страница.
