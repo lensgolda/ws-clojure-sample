@@ -19,8 +19,17 @@
 
 ;; Main function. App entry point.
 ;; Server runs on http://127.0.0.1:5000 by default
+(defn -main-dev
+    []
+    (-> #'all-routes
+        site
+        reload/wrap-reload
+        (run-server {:port 5000})))
+
 (defn -main
     []
-    (run-server (reload/wrap-reload (site #'all-routes)) {:port 5000}))
+    (-> #'all-routes
+        site
+        (run-server {:port 5000})))
     ;;(System/exit 0))
 

@@ -1,6 +1,6 @@
 (ns ws-clojure-sample.handler
-    (:require [org.httpkit.server :refer [with-channel on-receive on-close]]
-        [ws-clojure-sample.receiver :refer [receiver clients]]))
+  (:require [org.httpkit.server :refer [with-channel on-receive on-close]]
+            [ws-clojure-sample.receiver :refer [receiver clients]]))
 
 
 ;; Main WebSocket handler
