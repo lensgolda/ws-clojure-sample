@@ -1,13 +1,17 @@
 (ns ws-clojure-sample.core
-    (:require [clojure.pprint :refer [pprint]]
-              [org.httpkit.server :refer [run-server]]
-              [ring.middleware.reload :as reload]
-              [compojure.route :refer [resources files not-found]]
-              [compojure.handler :refer [site]] ;; form, query params decode; cookie; session, etc
-              [compojure.core :refer [defroutes GET POST DELETE ANY]]
-              [ws-clojure-sample.views.index :as views]
-              [ws-clojure-sample.handler :refer [ws-handler]]))
+    (:require [org.httpkit.server :refer [run-server]]                  ;; http-kit server
+              [compojure.core :refer [defroutes GET POST DELETE ANY]]   ;; defroutes, и методы
+              [compojure.route :refer [resources files not-found]]      ;; маршруты для статики, и not-found
+              [ring.middleware.defaults :refer :all]                    ;; middleware
+              [ws-clojure-sample.views.index :refer [index-page]]       ;; Добавляем представление index-page
+              [ws-clojure-sample.handler :refer [ws-handler]]))         ;; Добавляем обработчик для веб-сокетов
 
+(defroutes app-routes
+  (GET "/" [] index-page)                       ;; Нам нужна будет главная страница.
+  (GET "/ws" [] ws-handler)                     ;; здесь будем "ловить" веб-сокеты. Обработчик.
+  (resources "/")                               ;; директория ресурсов
+  (files "/static/")                            ;; префикс для статических файлов в папке `public`
+  (not-found "<h3>Страница не найдена</h3>"))   ;; все остальные, возвращает 404)
 
 ;; Main app routes, using Compojure
 (defroutes all-routes

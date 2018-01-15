@@ -20,9 +20,9 @@
     "Data receiver"
     [data]
     (let [responses (map #(future (slurp %)) urls)]
-        (doall (map (fn [data]
+        (doall (map (fn [resp]
           (doseq [client (keys @clients)]
-            (send! client @data))) responses))))
+            (send! client @resp))) responses))))
 
 ;; Receivers map, for WebSocket handler (see ws-handler)
 ;; for new one, write new receiver and add it to map
