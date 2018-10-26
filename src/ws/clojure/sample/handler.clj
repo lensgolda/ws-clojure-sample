@@ -4,7 +4,6 @@
 
 (defn ws-handler
   [request]
-  (clojure.pprint/pprint request)
   (async/as-channel request
     {:on-open    (fn [channel]
                    (swap! clients assoc channel true)
