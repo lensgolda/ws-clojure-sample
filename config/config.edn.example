@@ -1,0 +1,4 @@
+{:env :dev
+ :server {:host "localhost"
+          :port 5000
+          :auto-start true}}

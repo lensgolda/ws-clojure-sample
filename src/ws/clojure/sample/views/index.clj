@@ -1,4 +1,4 @@
-(ns ws-clojure-sample.views.index
+(ns ws.clojure.sample.views.index
   (:use [hiccup.page :only (html5 include-css include-js)])) ;; using hiccup
 
 
