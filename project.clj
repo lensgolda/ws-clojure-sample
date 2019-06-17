@@ -1,4 +1,4 @@
-(defproject ws-clojure-sample "0.1.0-SNAPSHOT"
+(defproject ws-clojure-sample "0.2.0-SNAPSHOT"
   :description "Clojure WebSocket Sample App"
   :url "http://example.com/ws-clojure-sample"
   :license {:name "Eclipse Public License"
