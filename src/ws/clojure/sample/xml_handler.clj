@@ -1,4 +1,4 @@
-(ns ws-clojure-sample.xml-handler
+(ns ws.clojure.sample.xml-handler
   (:require [clojure.xml :as xml]
             [clojure.zip :as zip]
             [clojure.data.xml :as data.xml]
