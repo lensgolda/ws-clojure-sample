@@ -1,12 +1,14 @@
 
-const socket = new WebSocket('ws://localhost:5000/ws?type=chat');
+const socket = new WebSocket('ws://localhost:5000/ws');
 
 let msg = document.getElementById('message');
 let btn = document.getElementsByName('send-btn')[0];
 let chat = document.getElementById('chat');
+let fakeName = faker.fake("{{name.firstName}}");
 
 const sendMessage = () => {
-  socket.send(msg.value);
+  let data = JSON.stringify({message: msg.value, name: fakeName});
+  socket.send(data);
 }
 
 msg.addEventListener("keyup", (event) => {
@@ -22,8 +24,12 @@ socket.onopen = (event) => console.log('Connection established...');
 
 socket.onmessage = (event) => {
   let response = JSON.parse(event.data);
+  /* COMMENT ME */
+  console.log(response);
   let p = document.createElement('p');
-  let htmlText = new Date().toLocaleString() + ":    " + response.message;
+  let htmlText = new Date().toLocaleString();
+  htmlText += " " + response.name;
+  htmlText += ":    " + response.message;
 
   if (response.key == 'chat') {
       p.innerHTML = htmlText;
@@ -33,21 +39,10 @@ socket.onmessage = (event) => {
     let responses = response.data;
 
     responses.forEach(resp => {
-        let keys = Object.keys(resp);
-        switch (keys.length) {
-            case 5:
-                htmlText += ("<br>    User-Agent:    " + resp.headers["User-Agent"]);
-                break;
-            case 2:
-                htmlText += ("<br>    NOW:    " + resp.now.rfc2822);
-                break;
-            case 1:
-                htmlText += ("<br>    IP:    " + resp.origin);
-                break;
-        }
+        let p = document.createElement('p');
+        p.innerHTML = "<pre>" + JSON.stringify(resp) + "</pre>";
+        chat.appendChild(p);
     });
-    p.innerHTML = htmlText;
-    chat.appendChild(p);
   } else {
     console.log(response.data);
   }
