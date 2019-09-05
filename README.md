@@ -1,13 +1,29 @@
 # ws-clojure-sample
 
-Clojure websocket async app sample using httpk-kit
+__Clojure websocket async app using Immutant__
+
+## Config
+__See__ `config/config.edn.example`
 
 ## Usage
 
-simply run it with lein
-```clojure
+```shell script
 lein run
 ```
+
+### REPL
+```shell script
+APP_CONFIG=config/config.edn lein repl
+
+;; REPL starts in 'user namespace, type:
+user=> (go)
+
+;; Server will be started, REPL will be switched to 'dev namespace
+
+dev=> (stop) ;; (reset), (start)
+
+```
+
 
 ## License
 
